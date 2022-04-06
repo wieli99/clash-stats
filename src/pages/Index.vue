@@ -1,10 +1,10 @@
 <template>
   <q-page class="row flex-center">
-    <q-space class="col-3"></q-space>
-    <ClashTeam :team="teams[0]" class="col-5 q-ma-lg bg-primary text-white"></ClashTeam>
-    <q-space class="col-3"></q-space>
+    <q-space class="col-md-3 col-sm-0"></q-space>
+    <ClashTeam :team="teams[0]" class="col-xs-10 col-md-5 q-ma-lg bg-primary text-white"></ClashTeam>
+    <q-space class="col-md-3 col-sm-0"></q-space>
 
-    <ClashTeam v-for="team in enemyTeams" :key="team.name" :team="team" class="col-3 q-ma-lg bg-secondary text-white"></ClashTeam>
+    <ClashTeam v-for="team in enemyTeams" :key="team.name" :team="team" class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg bg-secondary text-white"></ClashTeam>
   </q-page>
 </template>
 

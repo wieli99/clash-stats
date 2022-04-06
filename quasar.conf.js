@@ -93,7 +93,8 @@ module.exports = configure(function (ctx) {
           negative: '#bf616a',
           info: '#b48ead',
           warning: '#ebcb8b'
-        }
+        },
+        dark: 'auto'
       },
 
       // iconSet: 'material-icons', // Quasar icon set
