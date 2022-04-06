@@ -24,3 +24,13 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+body.body--dark {
+  background: #2E3440
+}
+
+body.body--light {
+  background: #ECEFF4
+}
+</style>

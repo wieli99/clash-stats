@@ -20,19 +20,10 @@ import ClashTeamMember from "components/ClashTeamMember";
 
 export default defineComponent({
   name: "ClashTeam",
+  props: ["team"],
 
   components: {
     ClashTeamMember,
   },
-
-  setup() {
-    let team = ref({
-      name: "HerrenSauna",
-      members: [{summonerName: "wieli99", rank: "Challenger", position: "MID"}, {summonerName: "tazyo", rank: "Silver 2", position: "ADC"}, {summonerName: "Eroor", rank: "Gold 3", position: "JGL"}, {summonerName: "M1scha", rank: "Platinum 1", position: "SUP"}, {summonerName: "Das Rind", rank: "Bronze 1", position: "TOP"}]
-    })
-    return {
-      team
-    }
-  }
 });
 </script>
