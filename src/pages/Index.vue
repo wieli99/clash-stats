@@ -11,12 +11,18 @@
 <script>
 import {computed, defineComponent, ref} from "vue";
 import ClashTeam from "components/ClashTeam";
+import { socket } from "boot/websocket"
+
 
 export default defineComponent({
   name: "PageIndex",
   components: {ClashTeam},
 
   setup() {
+
+    socket.emit("summoner", "wieli99");
+    socket.on("summoner", (summoner)=>console.log(summoner))
+
     let teams = ref([
       {
         id: 1,
