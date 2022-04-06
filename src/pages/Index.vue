@@ -1,8 +1,8 @@
 <template>
   <q-page class="row flex-center">
-    <q-space class="col-md-3 col-sm-0"></q-space>
+    <q-space class="col-xs-0 col-md-3"></q-space>
     <ClashTeam :team="teams[0]" class="col-xs-10 col-md-5 q-ma-lg bg-primary text-white"></ClashTeam>
-    <q-space class="col-md-3 col-sm-0"></q-space>
+    <q-space class="col-xs-0 col-md-3"></q-space>
 
     <ClashTeam v-for="team in enemyTeams" :key="team.name" :team="team" class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg bg-secondary text-white"></ClashTeam>
   </q-page>
@@ -19,6 +19,7 @@ export default defineComponent({
   setup() {
     let teams = ref([
       {
+        id: 1,
         name: "HerrenSauna",
         members: [
           {summonerName: "wieli99", rank: "Challenger", position: "MID"},
@@ -29,6 +30,7 @@ export default defineComponent({
         ]
       },
       {
+        id: 2,
         name: "Enemy1",
         members: [
           {summonerName: "noone", rank: "Challenger", position: "MID"},
@@ -39,6 +41,7 @@ export default defineComponent({
         ]
       },
       {
+        id: 3,
         name: "Enemy2",
         members: [
           {summonerName: "noone", rank: "Challenger", position: "MID"},
@@ -49,6 +52,7 @@ export default defineComponent({
         ]
       },
       {
+        id: 4,
         name: "Enemy3",
         members: [
           {summonerName: "noone", rank: "Challenger", position: "MID"},
@@ -59,6 +63,7 @@ export default defineComponent({
         ]
       },
       {
+        id: 5,
         name: "Enemy4",
         members: [
           {summonerName: "noone", rank: "Challenger", position: "MID"},
@@ -69,6 +74,7 @@ export default defineComponent({
         ]
       },
       {
+        id: 6,
         name: "Enemy5",
         members: [
           {summonerName: "noone", rank: "Challenger", position: "MID"},
