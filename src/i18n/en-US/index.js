@@ -4,5 +4,7 @@
 export default {
   failed: "Action failed",
   success: "Action was successful",
-  summonerIcon: "Icon of the summoner"
+  summonerIcon: "Icon of the summoner",
+  clash: "Clash",
+  ranked: "Ranked",
 };
