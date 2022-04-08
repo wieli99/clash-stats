@@ -3,7 +3,7 @@
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title> Quasar App</q-toolbar-title>
+        <q-toolbar-title> {{ $t("name") }}</q-toolbar-title>
       </q-toolbar>
     </q-header>
 
