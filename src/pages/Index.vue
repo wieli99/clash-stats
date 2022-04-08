@@ -12,16 +12,17 @@
 import {computed, defineComponent, ref} from "vue";
 import ClashTeam from "components/ClashTeam";
 import { socket } from "boot/websocket"
+import Notes from "components/Notes";
 
 
 export default defineComponent({
   name: "PageIndex",
-  components: {ClashTeam},
+  components: { ClashTeam },
 
   setup() {
 
-    socket.emit("summoner", "wieli99");
-    socket.on("summoner", (summoner)=>console.log(summoner))
+    socket.emit("summonerByName", "wieli99");
+    socket.on("summonerByName", (summoner)=>console.log(summoner))
 
     let teams = ref([
       {
