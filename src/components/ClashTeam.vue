@@ -8,7 +8,7 @@
 
     <q-card-section>
       <q-list bordered>
-          <ClashTeamMember v-for="member in team.members" :key="member" :member="member"></ClashTeamMember>
+          <ClashTeamMember v-for="member in team.members" :key="member" :member="member" @click="showDetails"></ClashTeamMember>
       </q-list>
     </q-card-section>
   </q-card>

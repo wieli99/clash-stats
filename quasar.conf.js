@@ -88,6 +88,7 @@ module.exports = configure(function (ctx) {
           accent: '#81a1c1',
 
           dark: '#2e3440',
+          light: '#eceff4',
 
           positive: '#a3be8c',
           negative: '#bf616a',
