@@ -1,12 +1,23 @@
 <template>
   <q-card class="fixed full-width window-height notes">
-    <q-editor v-model="notes" @update:model-value="sendNotes" />
+    <q-editor
+      v-model="notes"
+      @update:model-value="sendNotes"
+      :toolbar="[
+        ['bold', 'italic', 'underline', 'unordered', 'ordered'],
+        [{
+          label: $q.lang.editor.formatting,
+          icon: $q.iconSet.editor.formatting,
+          list: 'no-icons',
+          options: ['h5', 'h6']
+        }]
+      ]"/>
   </q-card>
 </template>
 
 <script>
 import {defineComponent, ref} from "vue";
-import { socket } from "boot/websocket"
+import {socket} from "boot/websocket"
 
 export default defineComponent({
   name: "Notes",
@@ -15,7 +26,7 @@ export default defineComponent({
 
     socket.emit("getNotes");
 
-    socket.on("notes", (text)=>notes.value = text)
+    socket.on("notes", (text) => notes.value = text)
 
     const sendNotes = () => {
       socket.emit("notes", notes.value);
