@@ -5,7 +5,9 @@ export default {
   name: "Clash Stats",
   failed: "Action failed",
   success: "Action was successful",
-  summonerIcon: "Icon of the summoner",
   clash: "Clash",
   ranked: "Ranked",
+  summonerIcon: "Icon of the summoner",
+  championIcon: "Icon of the summoner",
+  positionIcon: "Icon showing the main role of this summoner",
 };

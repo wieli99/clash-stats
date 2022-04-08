@@ -12,7 +12,6 @@
 import {computed, defineComponent, ref} from "vue";
 import ClashTeam from "components/ClashTeam";
 import { socket } from "boot/websocket"
-import Notes from "components/Notes";
 
 
 export default defineComponent({

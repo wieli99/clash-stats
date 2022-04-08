@@ -1,5 +1,5 @@
 <template>
-  <q-card class="col-5 q-ma-lg">
+  <q-card class="col-10 q-ma-lg">
     <q-splitter
       v-model="splitterModel"
     >

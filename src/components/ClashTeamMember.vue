@@ -2,7 +2,7 @@
   <q-item clickable v-ripple>
     <q-item-section avatar>
       <q-avatar>
-        <img src="https://cdn.quasar.dev/img/boy-avatar.png" :alt="$t('summonerIcon')">
+        <img :src="require('assets/ranks/' + rankImages[Math.floor(Math.random()*rankImages.length)])" :alt="$t('summonerIcon')">
       </q-avatar>
     </q-item-section>
 
@@ -24,7 +24,8 @@ export default defineComponent({
   name: "ClashTeamMember",
   props: ["member"],
   setup() {
-    return {}
+    let rankImages = ["Iron.png", "Bronze.png", "Silver.png", "Gold.png", "Platinum.png", "Diamond.png", "Grandmaster.png", "Challenger.png"]
+    return {rankImages}
   }
 });
 </script>
