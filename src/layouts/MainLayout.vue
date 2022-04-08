@@ -1,28 +1,25 @@
 <template>
-  <q-splitter
-    v-model="split"
-  >
-    <template v-slot:before>
-      <q-layout view="lHh Lpr lFf">
-        <q-header elevated>
-          <q-toolbar>
-            <q-toolbar-title> Quasar App</q-toolbar-title>
-          </q-toolbar>
-        </q-header>
 
+  <q-layout view="hHh lpR fFf">
+    <q-header elevated>
+      <q-toolbar>
+        <q-toolbar-title> Quasar App</q-toolbar-title>
+      </q-toolbar>
+    </q-header>
 
+    <q-splitter v-model="split">
+      <template v-slot:before>
         <q-page-container>
           <router-view/>
         </q-page-container>
-      </q-layout>
-    </template>
+      </template>
 
+      <template v-slot:after>
+        <Notes></Notes>
+      </template>
+    </q-splitter>
+  </q-layout>
 
-    <template v-slot:after>
-      <Notes style="
-  height: 100vh;"></Notes>
-    </template>
-  </q-splitter>
 
 </template>
 
@@ -49,10 +46,5 @@ body.body--dark {
 
 body.body--light {
   background: #ECEFF4
-}
-
-.q-splitter__panel.q-splitter__after {
-  height: 100vh;
-  position: sticky
 }
 </style>

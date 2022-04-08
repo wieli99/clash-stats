@@ -1,6 +1,6 @@
 <template>
-  <q-card>
-    <q-editor v-model="notes" min-height="5rem" @update:model-value="sendNotes" />
+  <q-card class="fixed full-width window-height notes">
+    <q-editor v-model="notes" @update:model-value="sendNotes" />
   </q-card>
 </template>
 
@@ -27,3 +27,9 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+.notes {
+  margin-top: 50px !important;
+}
+</style>
