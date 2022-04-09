@@ -3,10 +3,7 @@
     <q-item-section avatar>
       <q-avatar>
         <img
-          :src="
-            require('assets/ranks/' +
-              rankImages[Math.floor(Math.random() * rankImages.length)])
-          "
+          :src="require('assets/ranks/' + tier + '.png')"
           :alt="$t('summonerIcon')"
         />
       </q-avatar>
@@ -31,17 +28,6 @@ export default defineComponent({
   name: "ClashTeamMember",
   props: ["member"],
   setup(props) {
-    let rankImages = [
-      "Iron.png",
-      "Bronze.png",
-      "Silver.png",
-      "Gold.png",
-      "Platinum.png",
-      "Diamond.png",
-      "Grandmaster.png",
-      "Challenger.png",
-    ];
-
     let name = ref("");
     let tier = ref("");
 
@@ -55,7 +41,7 @@ export default defineComponent({
       tier.value = summonerRanked[0].tier;
     });
 
-    return { rankImages, tier, name };
+    return { tier, name };
   },
 });
 </script>
