@@ -29,7 +29,7 @@ export default defineComponent({
   props: ["member"],
   setup(props) {
     let name = ref("");
-    let tier = ref("");
+    let tier = ref("BRONZE");
 
     socket.emit("summonerById", props.member.summonerId);
     socket.on("summonerById", (summoner) => {
