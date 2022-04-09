@@ -1,52 +1,52 @@
 <template>
-  <q-input
-    outlined
-    bottom-slots
-    v-model="searchText"
-    :label="$t('inputSearchLabel')"
-    @keyup="searchWhenNotTypedForSomeTime"
-  >
-    <template v-slot:append>
-      <q-icon
-        v-if="searchText !== ''"
-        name="close"
-        @click="searchText = ''"
-        class="cursor-pointer"
-      />
-      <q-icon name="search" />
-    </template>
+	<q-input
+		v-model="searchText"
+		:label="$t('inputSearchLabel')"
+		bottom-slots
+		outlined
+		@keyup="searchWhenNotTypedForSomeTime"
+	>
+		<template v-slot:append>
+			<q-icon
+				v-if="searchText !== ''"
+				class="cursor-pointer"
+				name="close"
+				@click="searchText = ''"
+			/>
+			<q-icon name="search"/>
+		</template>
 
-    <template v-slot:hint>
-      {{ $t("inputSearchHint") }}
-    </template>
-  </q-input>
+		<template v-slot:hint>
+			{{ $t("inputSearchHint") }}
+		</template>
+	</q-input>
 </template>
 
 <script>
-import { ref } from "vue"
-import { socket } from "boot/websocket"
+import {ref} from "vue"
+import {socket} from "boot/websocket"
 
 export default {
-  name: "ClashSearch",
-  setup() {
-    let searchText = ref("")
-    let timer
+	name: "ClashSearch",
+	setup() {
+		let searchText = ref("")
+		let timer
 
-    const searchWhenNotTypedForSomeTime = () => {
-      if (timer) {
-        clearTimeout(timer)
-        timer = null
-      }
-      timer = setTimeout(() => {
-        socket.emit("teamBySummonerName", searchText.value)
-      }, 800)
-    }
+		const searchWhenNotTypedForSomeTime = () => {
+			if (timer) {
+				clearTimeout(timer)
+				timer = null
+			}
+			timer = setTimeout(() => {
+				socket.emit("teamBySummonerName", searchText.value)
+			}, 800)
+		}
 
-    return {
-      searchText,
-      searchWhenNotTypedForSomeTime,
-    }
-  },
+		return {
+			searchText,
+			searchWhenNotTypedForSomeTime,
+		}
+	},
 }
 </script>
 
