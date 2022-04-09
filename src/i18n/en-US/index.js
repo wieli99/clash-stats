@@ -7,6 +7,8 @@ export default {
   success: "Action was successful",
   clash: "Clash",
   ranked: "Ranked",
+  inputSearchHint: "Summoner name of an opponent",
+  inputSearchLabel: "Summoner",
   summonerIcon: "Icon of the summoner",
   championIcon: "Icon of the summoner",
   positionIcon: "Icon showing the main role of this summoner",

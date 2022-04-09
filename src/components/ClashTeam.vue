@@ -8,7 +8,7 @@
 
     <q-card-section>
       <q-list bordered>
-          <ClashTeamMember v-for="member in team.members" :key="member" :member="member" @click="showDetails"></ClashTeamMember>
+          <ClashTeamMember v-for="member in team.players" :key="member" :member="member" @click="showDetails"></ClashTeamMember>
       </q-list>
     </q-card-section>
   </q-card>
@@ -27,6 +27,8 @@ export default defineComponent({
   },
   setup(props) {
     const $router = useRouter()
+
+    console.log(props.team)
 
     const showDetails = () => {
       $router.push( {name: 'TeamDetails', params: { id: props.team.id }} )

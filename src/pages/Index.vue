@@ -1,103 +1,50 @@
 <template>
   <q-page class="row flex-center">
     <q-space class="col-xs-0 col-md-3"></q-space>
-    <ClashTeam :team="teams[0]" class="col-xs-10 col-md-5 q-ma-lg"></ClashTeam>
+    <ClashTeam :team="ownTeam" class="col-xs-10 col-md-5 q-ma-lg"></ClashTeam>
     <q-space class="col-xs-0 col-md-3"></q-space>
+
+    <ClashSearch class="col-10 q-mt-xl"></ClashSearch>
 
     <ClashTeam v-for="team in enemyTeams" :key="team.name" :team="team" class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"></ClashTeam>
   </q-page>
 </template>
 
 <script>
-import {computed, defineComponent, ref} from "vue";
+import { defineComponent, ref } from "vue";
 import ClashTeam from "components/ClashTeam";
 import { socket } from "boot/websocket"
+import ClashSearch from "components/ClashSearch";
 
 
 export default defineComponent({
   name: "PageIndex",
-  components: { ClashTeam },
+  components: { ClashSearch, ClashTeam },
 
   setup() {
+    let ownTeam = ref("")
 
-    socket.emit("summonerByName", "wieli99");
-    socket.on("summonerByName", (summoner)=>console.log(summoner))
-
-    let teams = ref([
-      {
-        id: 1,
-        name: "HerrenSauna",
-        members: [
-          {summonerName: "wieli99", rank: "Challenger", position: "MID"},
-          {summonerName: "tazyo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "Eroor", rank: "Gold 3", position: "JGL"},
-          {summonerName: "M1scha", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "Das Rind", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-      {
-        id: 2,
-        name: "Enemy1",
-        members: [
-          {summonerName: "noone", rank: "Challenger", position: "MID"},
-          {summonerName: "notwo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "nothree", rank: "Gold 3", position: "JGL"},
-          {summonerName: "nofour", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "nofive", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-      {
-        id: 3,
-        name: "Enemy2",
-        members: [
-          {summonerName: "noone", rank: "Challenger", position: "MID"},
-          {summonerName: "notwo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "nothree", rank: "Gold 3", position: "JGL"},
-          {summonerName: "nofour", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "nofive", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-      {
-        id: 4,
-        name: "Enemy3",
-        members: [
-          {summonerName: "noone", rank: "Challenger", position: "MID"},
-          {summonerName: "notwo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "nothree", rank: "Gold 3", position: "JGL"},
-          {summonerName: "nofour", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "nofive", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-      {
-        id: 5,
-        name: "Enemy4",
-        members: [
-          {summonerName: "noone", rank: "Challenger", position: "MID"},
-          {summonerName: "notwo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "nothree", rank: "Gold 3", position: "JGL"},
-          {summonerName: "nofour", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "nofive", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-      {
-        id: 6,
-        name: "Enemy5",
-        members: [
-          {summonerName: "noone", rank: "Challenger", position: "MID"},
-          {summonerName: "notwo", rank: "Silver 2", position: "ADC"},
-          {summonerName: "nothree", rank: "Gold 3", position: "JGL"},
-          {summonerName: "nofour", rank: "Platinum 1", position: "SUP"},
-          {summonerName: "nofive", rank: "Bronze 1", position: "TOP"}
-        ]
-      },
-    ])
-
-    const enemyTeams = computed(() => {
-      return teams.value.slice(1, teams.value.length)
+    socket.emit("initTeamBySummonerName", "wieli99");
+    socket.on("initTeamBySummonerName", (team)=> {
+      console.log(team)
+      ownTeam.value = team
     })
 
+    socket.on("summonerByName", (summoner)=> {
+      socket.emit("teamOfSummoner", summoner.id)
+    })
+
+    socket.on("summonerByName", (summoner)=> {
+      socket.emit("teamOfSummoner", summoner.id)
+    })
+
+    socket.on("teamOfSummoner", (team)=> {
+      console.log(team)
+    })
+
+    let enemyTeams = ref([])
     return {
-      teams,
+      ownTeam,
       enemyTeams
     }
   }
