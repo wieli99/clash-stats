@@ -34,13 +34,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-body.body--dark {
-  background: #2e3440;
-}
-
-body.body--light {
-  background: #eceff4;
-}
-</style>
