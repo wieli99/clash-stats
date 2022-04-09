@@ -21,27 +21,27 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { socket } from "boot/websocket";
+import { defineComponent, ref } from "vue"
+import { socket } from "boot/websocket"
 
 export default defineComponent({
   name: "ClashTeamMember",
   props: ["member"],
   setup(props) {
-    let name = ref("");
-    let tier = ref("BRONZE");
+    let name = ref("")
+    let tier = ref("BRONZE")
 
-    socket.emit("summonerById", props.member.summonerId);
+    socket.emit("summonerById", props.member.summonerId)
     socket.on("summonerById", (summoner) => {
-      name.value = summoner.name;
-    });
+      name.value = summoner.name
+    })
 
-    socket.emit("summonerRankedById", props.member.summonerId);
+    socket.emit("summonerRankedById", props.member.summonerId)
     socket.on("summonerRankedById", (summonerRanked) => {
-      tier.value = summonerRanked[0].tier;
-    });
+      tier.value = summonerRanked[0].tier
+    })
 
-    return { tier, name };
+    return { tier, name }
   },
-});
+})
 </script>

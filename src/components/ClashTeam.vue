@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import ClashTeamMember from "components/ClashTeamMember";
-import { useRouter } from "vue-router";
+import { defineComponent } from "vue"
+import ClashTeamMember from "components/ClashTeamMember"
+import { useRouter } from "vue-router"
 
 export default defineComponent({
   name: "ClashTeam",
@@ -31,15 +31,15 @@ export default defineComponent({
     ClashTeamMember,
   },
   setup(props) {
-    const $router = useRouter();
+    const $router = useRouter()
 
     const showDetails = () => {
-      $router.push({ name: "TeamDetails", params: { id: props.team.id } });
-    };
+      $router.push({ name: "TeamDetails", params: { id: props.team.id } })
+    }
 
     return {
       showDetails,
-    };
+    }
   },
-});
+})
 </script>

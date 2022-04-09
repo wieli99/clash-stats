@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import Notes from "components/Notes";
+import { defineComponent, ref } from "vue"
+import Notes from "components/Notes"
 
 export default defineComponent({
   name: "MainLayout",
@@ -30,9 +30,9 @@ export default defineComponent({
   setup() {
     return {
       split: ref(80),
-    };
+    }
   },
-});
+})
 </script>
 
 <style>

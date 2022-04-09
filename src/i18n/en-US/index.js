@@ -12,4 +12,4 @@ export default {
   summonerIcon: "Icon of the summoner",
   championIcon: "Icon of the summoner",
   positionIcon: "Icon showing the main role of this summoner",
-};
+}

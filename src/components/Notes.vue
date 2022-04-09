@@ -19,27 +19,27 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { socket } from "boot/websocket";
+import { defineComponent, ref } from "vue"
+import { socket } from "boot/websocket"
 
 export default defineComponent({
   name: "Notes",
   setup() {
-    let notes = ref("");
+    let notes = ref("")
 
-    socket.emit("getNotes");
+    socket.emit("getNotes")
 
-    socket.on("notes", (text) => (notes.value = text));
+    socket.on("notes", (text) => (notes.value = text))
 
     const sendNotes = () => {
-      socket.emit("notes", notes.value);
-    };
+      socket.emit("notes", notes.value)
+    }
     return {
       notes,
       sendNotes,
-    };
+    }
   },
-});
+})
 </script>
 
 <style>

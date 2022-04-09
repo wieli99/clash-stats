@@ -8,16 +8,16 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import { useRoute } from "vue-router";
-import ClashTeamDetailsMember from "components/ClashTeamDetailsMember";
+import { defineComponent, ref } from "vue"
+import { useRoute } from "vue-router"
+import ClashTeamDetailsMember from "components/ClashTeamDetailsMember"
 
 export default defineComponent({
   name: "ClashTeamDetails",
   components: { ClashTeamDetailsMember },
   setup() {
-    const route = useRoute();
-    let teamId = route.params.id;
+    const route = useRoute()
+    let teamId = route.params.id
 
     let team = ref(
       //Todo: Get this from backend
@@ -32,8 +32,8 @@ export default defineComponent({
           { summonerName: "Das Rind", rank: "Bronze 1", position: "TOP" },
         ],
       }
-    );
-    return { teamId, team };
+    )
+    return { teamId, team }
   },
-});
+})
 </script>

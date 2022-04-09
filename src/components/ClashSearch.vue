@@ -23,31 +23,31 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { socket } from "boot/websocket";
+import { ref } from "vue"
+import { socket } from "boot/websocket"
 
 export default {
   name: "ClashSearch",
   setup() {
-    let searchText = ref("");
-    let timer;
+    let searchText = ref("")
+    let timer
 
     const searchWhenNotTypedForSomeTime = () => {
       if (timer) {
-        clearTimeout(timer);
-        timer = null;
+        clearTimeout(timer)
+        timer = null
       }
       timer = setTimeout(() => {
-        socket.emit("teamBySummonerName", searchText.value);
-      }, 800);
-    };
+        socket.emit("teamBySummonerName", searchText.value)
+      }, 800)
+    }
 
     return {
       searchText,
       searchWhenNotTypedForSomeTime,
-    };
+    }
   },
-};
+}
 </script>
 
 <style scoped></style>

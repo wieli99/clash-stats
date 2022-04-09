@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
-import ClashTeamDetailsMemberClash from "components/ClashTeamDetailsMemberClash";
-import ClashTeamDetailsMemberRanked from "components/ClashTeamDetailsMemberRanked";
-import ClashTeamDetailsMemberGeneral from "components/ClashTeamDetailsMemberGeneral";
+import { defineComponent, ref } from "vue"
+import ClashTeamDetailsMemberClash from "components/ClashTeamDetailsMemberClash"
+import ClashTeamDetailsMemberRanked from "components/ClashTeamDetailsMemberRanked"
+import ClashTeamDetailsMemberGeneral from "components/ClashTeamDetailsMemberGeneral"
 
 export default defineComponent({
   name: "ClashTeamDetailsMember",
@@ -61,7 +61,7 @@ export default defineComponent({
     return {
       tab: ref("ranked"),
       splitterModel: ref(25),
-    };
+    }
   },
-});
+})
 </script>

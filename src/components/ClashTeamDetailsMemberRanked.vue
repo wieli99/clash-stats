@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
+import { defineComponent } from "vue"
 
 export default defineComponent({
   name: "ClashTeamDetailsMemberRanked",
   props: ["member"],
   setup() {
-    return {};
+    return {}
   },
-});
+})
 </script>
