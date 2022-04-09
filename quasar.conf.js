@@ -83,19 +83,19 @@ module.exports = configure(function (ctx) {
     framework: {
       config: {
         brand: {
-          primary: '#88c0d0',
-          secondary: '#8fbcbb',
-          accent: '#81a1c1',
+          primary: "#88c0d0",
+          secondary: "#8fbcbb",
+          accent: "#81a1c1",
 
-          dark: '#2e3440',
-          light: '#eceff4',
+          dark: "#2e3440",
+          light: "#eceff4",
 
-          positive: '#a3be8c',
-          negative: '#bf616a',
-          info: '#b48ead',
-          warning: '#ebcb8b'
+          positive: "#a3be8c",
+          negative: "#bf616a",
+          info: "#b48ead",
+          warning: "#ebcb8b",
         },
-        dark: 'auto'
+        dark: "auto",
       },
 
       // iconSet: 'material-icons', // Quasar icon set

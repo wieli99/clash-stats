@@ -1,8 +1,8 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 <script>
-import {defineComponent} from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "App",
@@ -10,7 +10,8 @@ export default defineComponent({
 </script>
 
 <style>
-.q-dark, .q-dark * {
+.q-dark,
+.q-dark * {
   color: var(--q-light);
 }
 </style>

@@ -6,13 +6,13 @@ const routes = [
       {
         path: "",
         name: "Home",
-        component: () => import("pages/Index.vue")
+        component: () => import("pages/Index.vue"),
       },
       {
         path: "/team/:id",
         name: "TeamDetails",
-        component: () => import("pages/ClashTeamDetails.vue")
-      }
+        component: () => import("pages/ClashTeamDetails.vue"),
+      },
     ],
   },
 

@@ -4,11 +4,16 @@
       <h5>{{ team.name }}</h5>
     </q-card-section>
 
-    <q-separator/>
+    <q-separator />
 
     <q-card-section>
       <q-list bordered>
-          <ClashTeamMember v-for="member in team.players" :key="member" :member="member" @click="showDetails"></ClashTeamMember>
+        <ClashTeamMember
+          v-for="member in team.players"
+          :key="member"
+          :member="member"
+          @click="showDetails"
+        ></ClashTeamMember>
       </q-list>
     </q-card-section>
   </q-card>
@@ -17,7 +22,7 @@
 <script>
 import { defineComponent } from "vue";
 import ClashTeamMember from "components/ClashTeamMember";
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "ClashTeam",
@@ -26,17 +31,17 @@ export default defineComponent({
     ClashTeamMember,
   },
   setup(props) {
-    const $router = useRouter()
+    const $router = useRouter();
 
-    console.log(props.team)
+    console.log(props.team);
 
     const showDetails = () => {
-      $router.push( {name: 'TeamDetails', params: { id: props.team.id }} )
-    }
+      $router.push({ name: "TeamDetails", params: { id: props.team.id } });
+    };
 
     return {
-      showDetails
-    }
-  }
+      showDetails,
+    };
+  },
 });
 </script>

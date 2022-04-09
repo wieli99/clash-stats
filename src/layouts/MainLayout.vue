@@ -1,5 +1,4 @@
 <template>
-
   <q-layout view="hHh lpR fFf">
     <q-header elevated>
       <q-toolbar>
@@ -10,7 +9,7 @@
     <q-splitter v-model="split">
       <template v-slot:before>
         <q-page-container>
-          <router-view/>
+          <router-view />
         </q-page-container>
       </template>
 
@@ -19,21 +18,18 @@
       </template>
     </q-splitter>
   </q-layout>
-
-
 </template>
 
 <script>
-
-import {defineComponent, ref} from "vue";
+import { defineComponent, ref } from "vue";
 import Notes from "components/Notes";
 
 export default defineComponent({
   name: "MainLayout",
-  components: {Notes},
+  components: { Notes },
   setup() {
     return {
-      split: ref(80)
+      split: ref(80),
     };
   },
 });
@@ -41,10 +37,10 @@ export default defineComponent({
 
 <style>
 body.body--dark {
-  background: #2E3440
+  background: #2e3440;
 }
 
 body.body--light {
-  background: #ECEFF4
+  background: #eceff4;
 }
 </style>

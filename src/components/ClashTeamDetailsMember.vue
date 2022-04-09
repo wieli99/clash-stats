@@ -1,10 +1,10 @@
 <template>
   <q-card class="col-10 q-ma-lg">
-    <q-splitter
-      v-model="splitterModel"
-    >
+    <q-splitter v-model="splitterModel">
       <template v-slot:before>
-        <ClashTeamDetailsMemberGeneral :member="member"></ClashTeamDetailsMemberGeneral>
+        <ClashTeamDetailsMemberGeneral
+          :member="member"
+        ></ClashTeamDetailsMemberGeneral>
       </template>
 
       <template v-slot:after>
@@ -17,21 +17,25 @@
           align="justify"
           narrow-indicator
         >
-          <q-tab name="ranked" :label="$t('ranked')"/>
-          <q-tab name="clash" :label="$t('clash')"/>
+          <q-tab name="ranked" :label="$t('ranked')" />
+          <q-tab name="clash" :label="$t('clash')" />
         </q-tabs>
 
-        <q-separator/>
+        <q-separator />
 
         <q-tab-panels v-model="tab" animated swipeable>
           <q-tab-panel name="ranked">
             <div class="text-h6">{{ $t("ranked") }}</div>
-            <ClashTeamDetailsMemberRanked :member="member"></ClashTeamDetailsMemberRanked>
+            <ClashTeamDetailsMemberRanked
+              :member="member"
+            ></ClashTeamDetailsMemberRanked>
           </q-tab-panel>
 
           <q-tab-panel name="clash">
             <div class="text-h6">{{ $t("clash") }}</div>
-            <ClashTeamDetailsMemberClash :member="member"></ClashTeamDetailsMemberClash>
+            <ClashTeamDetailsMemberClash
+              :member="member"
+            ></ClashTeamDetailsMemberClash>
           </q-tab-panel>
         </q-tab-panels>
       </template>
@@ -40,20 +44,24 @@
 </template>
 
 <script>
-import {defineComponent, ref} from "vue";
+import { defineComponent, ref } from "vue";
 import ClashTeamDetailsMemberClash from "components/ClashTeamDetailsMemberClash";
 import ClashTeamDetailsMemberRanked from "components/ClashTeamDetailsMemberRanked";
 import ClashTeamDetailsMemberGeneral from "components/ClashTeamDetailsMemberGeneral";
 
 export default defineComponent({
   name: "ClashTeamDetailsMember",
-  components: {ClashTeamDetailsMemberGeneral, ClashTeamDetailsMemberRanked, ClashTeamDetailsMemberClash},
+  components: {
+    ClashTeamDetailsMemberGeneral,
+    ClashTeamDetailsMemberRanked,
+    ClashTeamDetailsMemberClash,
+  },
   props: ["member"],
   setup() {
     return {
       tab: ref("ranked"),
-      splitterModel: ref(25)
-    }
-  }
+      splitterModel: ref(25),
+    };
+  },
 });
 </script>

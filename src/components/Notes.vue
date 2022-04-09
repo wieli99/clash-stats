@@ -5,37 +5,40 @@
       @update:model-value="sendNotes"
       :toolbar="[
         ['bold', 'italic', 'underline', 'unordered', 'ordered'],
-        [{
-          label: $q.lang.editor.formatting,
-          icon: $q.iconSet.editor.formatting,
-          list: 'no-icons',
-          options: ['h5', 'h6']
-        }]
-      ]"/>
+        [
+          {
+            label: $q.lang.editor.formatting,
+            icon: $q.iconSet.editor.formatting,
+            list: 'no-icons',
+            options: ['h5', 'h6'],
+          },
+        ],
+      ]"
+    />
   </q-card>
 </template>
 
 <script>
-import {defineComponent, ref} from "vue";
-import {socket} from "boot/websocket"
+import { defineComponent, ref } from "vue";
+import { socket } from "boot/websocket";
 
 export default defineComponent({
   name: "Notes",
   setup() {
-    let notes = ref("")
+    let notes = ref("");
 
     socket.emit("getNotes");
 
-    socket.on("notes", (text) => notes.value = text)
+    socket.on("notes", (text) => (notes.value = text));
 
     const sendNotes = () => {
       socket.emit("notes", notes.value);
-    }
+    };
     return {
       notes,
-      sendNotes
-    }
-  }
+      sendNotes,
+    };
+  },
 });
 </script>
 
