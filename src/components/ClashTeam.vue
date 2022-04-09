@@ -33,8 +33,6 @@ export default defineComponent({
   setup(props) {
     const $router = useRouter();
 
-    console.log(props.team);
-
     const showDetails = () => {
       $router.push({ name: "TeamDetails", params: { id: props.team.id } });
     };

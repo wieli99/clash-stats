@@ -38,7 +38,7 @@ export default {
         timer = null;
       }
       timer = setTimeout(() => {
-        socket.emit("summonerByName", searchText.value);
+        socket.emit("teamBySummonerName", searchText.value);
       }, 800);
     };
 

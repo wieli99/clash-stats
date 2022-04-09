@@ -6,12 +6,7 @@
 
     <ClashSearch class="col-10 q-mt-xl"></ClashSearch>
 
-    <ClashTeam
-      v-for="team in enemyTeams"
-      :key="team.name"
-      :team="team"
-      class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"
-    ></ClashTeam>
+    <ClashTeam v-if="enemyTeam" :team="enemyTeam" class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"></ClashTeam>
   </q-page>
 </template>
 
@@ -27,10 +22,10 @@ export default defineComponent({
 
   setup() {
     let ownTeam = ref("");
+    let enemyTeam = ref(null);
 
     socket.emit("initTeamBySummonerName", "wieli99");
     socket.on("initTeamBySummonerName", (team) => {
-      console.log(team);
       ownTeam.value = team;
     });
 
@@ -42,14 +37,13 @@ export default defineComponent({
       socket.emit("teamOfSummoner", summoner.id);
     });
 
-    socket.on("teamOfSummoner", (team) => {
-      console.log(team);
+    socket.on("teamBySummonerName", (team) => {
+      enemyTeam.value = team;
     });
 
-    let enemyTeams = ref([]);
     return {
       ownTeam,
-      enemyTeams,
+      enemyTeam,
     };
   },
 });

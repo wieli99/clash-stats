@@ -10,7 +10,7 @@
       />
 
       <img
-        src="~assets/ranks/Silver.png"
+        src="~assets/ranks/SILVER.png"
         :alt="$t('positionIcon')"
         class="self-center col-4 q-mr-auto position-icon"
       />
