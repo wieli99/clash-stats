@@ -15,39 +15,38 @@
 </template>
 
 <script>
-import {defineComponent, ref} from "vue"
+import {defineComponent} from "vue"
 import ClashTeam from "components/ClashTeam"
 import {socket} from "boot/websocket"
 import ClashSearch from "components/ClashSearch"
+import {useOwnClashTeamStore} from '../stores/ownClashTeam'
+import {storeToRefs} from "pinia/dist/pinia"
+import {useEnemyClashTeamStore} from "src/stores/enemyClashTeam"
 
 export default defineComponent({
 	name: "PageIndex",
 	components: {ClashSearch, ClashTeam},
 
 	setup() {
-		let ownTeam = ref("")
-		let enemyTeam = ref(null)
+		const ownStore = useOwnClashTeamStore()
+		const {ownTeam} = storeToRefs(ownStore)
 
-		socket.emit("initTeamBySummonerName", "wieli99")
-		socket.on("initTeamBySummonerName", (team) => {
-			ownTeam.value = team
+		const enemyStore = useEnemyClashTeamStore()
+		const {enemyTeam} = storeToRefs(enemyStore)
+
+		socket.emit("initTeamBySummonerName", "wieli99", true)
+
+
+
+		socket.on("initTeamBySummonerName", (team, isOwnTeam) => {
+			if (isOwnTeam) ownStore.setTeam(team)
+			else enemyStore.setTeam(team)
 		})
 
-		socket.on("summonerByName", (summoner) => {
-			socket.emit("teamOfSummoner", summoner.id)
-		})
-
-		socket.on("summonerByName", (summoner) => {
-			socket.emit("teamOfSummoner", summoner.id)
-		})
-
-		socket.on("teamBySummonerName", (team) => {
-			enemyTeam.value = team
-		})
 
 		return {
-			ownTeam,
 			enemyTeam,
+			ownTeam
 		}
 	},
 })

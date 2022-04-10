@@ -1,7 +1,7 @@
 <template>
 	<q-card>
 		<q-card-section @click="showDetails">
-			<h5>{{ team.name }}</h5>
+			<h5>{{ team.name }} ({{ team.abbreviation }})</h5>
 		</q-card-section>
 
 		<q-separator/>
