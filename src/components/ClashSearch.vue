@@ -25,14 +25,20 @@
 <script>
 import {ref} from "vue"
 import {socket} from "boot/websocket"
+import {useEnemyClashTeamStore} from "src/stores/enemyClashTeam"
 
 export default {
 	name: "ClashSearch",
 	setup() {
 		let searchText = ref("")
 		let timer
+		const enemyStore = useEnemyClashTeamStore()
 
 		const searchWhenNotTypedForSomeTime = () => {
+			if (searchText.value === "") enemyStore.setDisplayEnemyTeamSkeleton(false)
+			else enemyStore.setDisplayEnemyTeamSkeleton(true)
+
+			enemyStore.setTeam({})
 			if (timer) {
 				clearTimeout(timer)
 				timer = null
@@ -41,6 +47,9 @@ export default {
 				socket.emit("initTeamBySummonerName", searchText.value, false)
 			}, 800)
 		}
+
+
+
 
 		return {
 			searchText,
