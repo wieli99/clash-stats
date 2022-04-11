@@ -1,8 +1,9 @@
 <template>
 	<q-page class="row flex-center">
 		<ClashTeamDetailsMember
-			v-for="member in team.members"
+			v-for="member in team.players"
 			:key="member.summonerName"
+			:member="member"
 		></ClashTeamDetailsMember>
 	</q-page>
 </template>
@@ -11,29 +12,30 @@
 import {defineComponent, ref} from "vue"
 import {useRoute} from "vue-router"
 import ClashTeamDetailsMember from "components/ClashTeamDetailsMember"
+import {useOwnClashTeamStore} from "src/stores/ownClashTeam"
+import {storeToRefs} from "pinia/dist/pinia"
+import {useEnemyClashTeamStore} from "src/stores/enemyClashTeam"
 
 export default defineComponent({
 	name: "ClashTeamDetails",
 	components: {ClashTeamDetailsMember},
 	setup() {
 		const route = useRoute()
-		let teamId = route.params.id
+		const teamId = route.params.id
 
-		let team = ref(
-			//Todo: Get this from backend
-			{
-				id: 1,
-				name: "HerrenSauna",
-				members: [
-					{summonerName: "wieli99", rank: "Challenger", position: "MID"},
-					{summonerName: "tazyo", rank: "Silver 2", position: "ADC"},
-					{summonerName: "Eroor", rank: "Gold 3", position: "JGL"},
-					{summonerName: "M1scha", rank: "Platinum 1", position: "SUP"},
-					{summonerName: "Das Rind", rank: "Bronze 1", position: "TOP"},
-				],
-			}
-		)
-		return {teamId, team}
+		const ownStore = useOwnClashTeamStore()
+		const {ownTeam} = storeToRefs(ownStore)
+
+		const enemyStore = useEnemyClashTeamStore()
+		const {enemyTeam} = storeToRefs(enemyStore)
+
+		let team= ref({})
+
+		if (teamId === ownTeam.value.id) team.value = ownTeam.value
+		else team.value = enemyTeam.value
+
+
+		return {teamId, team, ownTeam}
 	},
 })
 </script>
