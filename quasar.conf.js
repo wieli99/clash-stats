@@ -91,9 +91,9 @@ module.exports = configure(function (ctx) {
 					dark1: "#3b4252",
 					dark2: "#434c5e",
 					dark3: "#4c566a",
-					light: "#d8dee9",
+					light: "#eceff4",
 					light1: "#e5e9f0",
-					light2: "#eceff4",
+					light2: "#d8dee9",
 
 					positive: "#a3be8c",
 					negative: "#bf616a",

@@ -1,13 +1,14 @@
 <template>
 	<q-page class="row flex-center">
-		<h1 class="col-10">Clash Team</h1>
+		<h2 class="col-10 text-center">{{ team.name }}</h2>
 		<ClashTeamDetailsMember
 			v-for="member in team.players"
 			:key="member.summonerName"
 			:member="member"
+			class="q-my-xl"
 		></ClashTeamDetailsMember>
 
-		<ClashTeamMultiSearch :team="team" class="col-10 q-my-lg"></ClashTeamMultiSearch>
+		<ClashTeamMultiSearch :team="team" class="col-10 q-my-xl"></ClashTeamMultiSearch>
 	</q-page>
 </template>
 
