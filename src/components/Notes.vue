@@ -41,3 +41,9 @@ export default defineComponent({
 	},
 })
 </script>
+
+<style>
+.q-editor__content {
+	height: calc(100vh - 32px);
+}
+</style>
