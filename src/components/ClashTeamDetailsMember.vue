@@ -7,13 +7,13 @@
 				<img
 					:alt="$t('positionIcon')"
 					class="self-center col-4 q-mx-auto position-icon"
-					:src="require('assets/positions/' + member.position.toUpperCase() + '.png')"
+					:src="require('assets/ranks/' + member.tier + '.png')"
 				/>
 
 				<img
 					:alt="$t('positionIcon')"
 					class="self-center col-4 q-mx-auto position-icon"
-					:src="require('assets/ranks/' + member.tier + '.png')"
+					:src="require('assets/positions/' + member.position.toUpperCase() + '.png')"
 				/>
 			</div>
 
