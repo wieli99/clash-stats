@@ -1,6 +1,6 @@
 <template>
 	<q-page class="row flex-center">
-		<h2 class="col-10 text-center">{{ team.name }}</h2>
+		<h2 class="col-10 text-center">{{ team.name }} ({{ team.abbreviation }})</h2>
 		<ClashTeamDetailsMember
 			v-for="member in team.players"
 			:key="member.summonerName"
@@ -9,6 +9,8 @@
 		></ClashTeamDetailsMember>
 
 		<ClashTeamMultiSearch :team="team" class="col-10 q-my-xl"></ClashTeamMultiSearch>
+
+		<q-btn round color="primary" icon="arrow_back" class="fixed back_btn" @click="$router.push('/')" />
 	</q-page>
 </template>
 
@@ -44,3 +46,9 @@ export default defineComponent({
 	},
 })
 </script>
+<style>
+.back_btn {
+	top: 60px;
+	left: 60px;
+}
+</style>
