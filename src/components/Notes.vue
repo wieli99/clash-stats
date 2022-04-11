@@ -41,9 +41,3 @@ export default defineComponent({
 	},
 })
 </script>
-
-<style>
-.notes {
-	margin-top: 50px !important;
-}
-</style>
