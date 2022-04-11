@@ -1,11 +1,5 @@
 <template>
 	<q-layout view="hHh lpR fFf">
-		<q-header elevated>
-			<q-toolbar>
-				<q-toolbar-title> {{ $t("name") }}</q-toolbar-title>
-			</q-toolbar>
-		</q-header>
-
 		<q-splitter v-model="split">
 			<template v-slot:before>
 				<q-page-container>
