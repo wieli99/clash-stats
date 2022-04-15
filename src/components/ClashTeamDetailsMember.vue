@@ -1,7 +1,9 @@
 <template>
-	<q-card class="col-sm-4 col-md-2 q-ma-sm">
+	<q-card class="col-sm-4 col-md-2 q-ma-sm grow">
 		<div class="col q-pa-md">
-			<p class="text-h6 text-center q-my-md"><strong>{{ member.summonerName }}</strong></p>
+			<div class="q-my-sm q-pa-xs text-center text-h5 stamp rounded-borders text-negative" v-if="isSmurf === 1"><strong class="text-negative">SMURF</strong></div>
+			<div class="q-my-sm q-pa-xs text-center text-h5 stamp rounded-borders text-warning" v-if="isSmurf === 0"><strong class="text-warning">MAY BE SMURF</strong></div>
+			<p class="text-h6 text-center q-mb-md q-mt-lg"><strong>{{ member.summonerName }}</strong></p>
 
 			<div class="q-my-sm row">
 				<img
@@ -20,8 +22,7 @@
 			<div class="text-center q-mt-lg q-mb-sm">Winrate: {{ winRate }}%</div>
 			<div class="text-center q-mb-sm">Games: {{ member.wins + member.losses }}</div>
 
-			<div class="q-my-sm" v-if="isSmurf === 1"><strong class="text-negative">SMURF</strong></div>
-			<div class="q-my-sm" v-if="isSmurf === 0"><strong class="text-warning">MAY BE SMURF</strong></div>
+
 		</div>
 	</q-card>
 </template>
@@ -54,5 +55,9 @@ export default defineComponent({
 <style>
 .position-icon {
 	max-width: 3rem !important;
+}
+
+.stamp {
+	border: 2px solid;
 }
 </style>
