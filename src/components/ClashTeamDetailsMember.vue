@@ -38,9 +38,9 @@ export default defineComponent({
 		let games = props.member.wins + props.member.losses
 		let winRate = Math.round(props.member.wins / games * 100)
 
-		if (winRate > 56 && games > 20) {
+		if (winRate > 59 && games > 20) {
 			isSmurf = 1
-		} else if (winRate > 54 && games < 25) {
+		} else if (winRate > 56 && games < 25) {
 			isSmurf = 0
 		} else {
 			isSmurf = -1
