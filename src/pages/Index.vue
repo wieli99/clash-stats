@@ -13,12 +13,13 @@
 			class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"
 		></ClashTeam>
 
-		<ClashTeamSkeleton v-if="displayEnemyTeamSkeleton" class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"></ClashTeamSkeleton>
+		<ClashTeamSkeleton v-if="displayEnemyTeamSkeleton"
+						   class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg"></ClashTeamSkeleton>
 	</q-page>
 </template>
 
 <script>
-import {defineComponent, ref} from "vue"
+import {defineComponent} from "vue"
 import ClashTeam from "components/ClashTeam"
 import {socket} from "boot/websocket"
 import ClashSearch from "components/ClashSearch"
@@ -26,12 +27,17 @@ import {useOwnClashTeamStore} from '../stores/ownClashTeam'
 import {storeToRefs} from "pinia/dist/pinia"
 import {useEnemyClashTeamStore} from "src/stores/enemyClashTeam"
 import ClashTeamSkeleton from "components/ClashTeamSkeleton"
+import {useQuasar} from "quasar"
+import {useI18n} from "vue-i18n"
 
 export default defineComponent({
 	name: "PageIndex",
 	components: {ClashTeamSkeleton, ClashSearch, ClashTeam},
 
 	setup() {
+		const $q = useQuasar()
+		const $t = useI18n()
+
 		const ownStore = useOwnClashTeamStore()
 		const {ownTeam} = storeToRefs(ownStore)
 
@@ -41,11 +47,18 @@ export default defineComponent({
 		socket.emit("initTeamBySummonerName", "wieli99", true)
 
 
-
 		socket.on("initTeamBySummonerName", (team, isOwnTeam) => {
 			if (isOwnTeam) ownStore.setTeam(team)
 			else enemyStore.setTeam(team)
 			enemyStore.setDisplayEnemyTeamSkeleton(false)
+		})
+
+		socket.on("noTeamFound", () => {
+			enemyStore.setDisplayEnemyTeamSkeleton(false)
+			$q.notify({
+				type: 'warning',
+				message: $t.t("noTeamFoundNotification")
+			})
 		})
 
 

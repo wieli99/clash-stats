@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import {defineComponent, ref} from "vue"
-import {socket} from "boot/websocket"
+import {defineComponent} from "vue"
 
 export default defineComponent({
 	name: "ClashTeamMember",
