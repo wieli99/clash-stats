@@ -6,7 +6,7 @@
 
 		<q-list dense style="min-width: 100px">
 			<q-item clickable>
-				<q-item-section>Select Dark Mode Preference</q-item-section>
+				<q-item-section>{{ $t("menu.darkModeSetting") }}</q-item-section>
 				<q-item-section side>
 					<q-icon name="keyboard_arrow_right"/>
 				</q-item-section>
@@ -28,7 +28,7 @@
 
 
 			<q-item clickable>
-				<q-item-section>Theme</q-item-section>
+				<q-item-section>{{ $t("menu.theme") }}</q-item-section>
 				<q-item-section side>
 					<q-icon name="keyboard_arrow_right"/>
 				</q-item-section>
@@ -63,6 +63,22 @@
 				</q-menu>
 
 			</q-item>
+
+			<q-separator class="q-my-sm"></q-separator>
+
+			<q-item>
+				<q-select
+					v-model="locale"
+					:options="localeOptions"
+					:label="$t('menu.language')"
+					dense
+					borderless
+					emit-value
+					map-options
+					options-dense
+					class="full-width"
+				/>
+			</q-item>
 		</q-list>
 
 	</q-menu>
@@ -71,11 +87,13 @@
 <script>
 import {ref, watch} from "vue"
 import {setCssVar, useQuasar} from 'quasar'
+import {useI18n} from "vue-i18n"
 
 export default {
 	name: 'Menu',
 	setup() {
 		const $q = useQuasar()
+		const $t = useI18n()
 
 		const darkMode = ["Auto", "Dark", "Light"]
 		const themes = [
@@ -264,8 +282,6 @@ export default {
 		]
 
 
-
-
 		const setDarkMode = () => {
 			if (selectedDarkModeValue.value === "Auto") $q.dark.set("auto")
 			if (selectedDarkModeValue.value === "Dark") $q.dark.set(true)
@@ -273,18 +289,15 @@ export default {
 		}
 
 		let selectedDarkModeValue = ref("Auto")
-		selectedDarkModeValue.value = $q.localStorage.getItem("darkMode")
+		if ($q.localStorage.getItem("darkMode")) {
+			selectedDarkModeValue.value = $q.localStorage.getItem("darkMode")
+		}
 		setDarkMode()
 
 		watch(selectedDarkModeValue, () => {
 			$q.localStorage.set("darkMode", selectedDarkModeValue.value)
 			setDarkMode()
 		})
-
-
-
-
-
 
 
 		const setTheme = (theme) => {
@@ -315,14 +328,40 @@ export default {
 
 
 		let selectedTheme = ref("Nord")
-		selectedTheme.value = $q.localStorage.getItem("theme")
+		if ($q.localStorage.getItem("theme")) {
+			selectedTheme.value = $q.localStorage.getItem("theme")
+		}
 		applyTheme(getValuesOfTheme(selectedTheme.value))
+
+
+
+
+
+
+		const {locale} = useI18n({useScope: 'global'})
+		const localeOptions = [
+			{value: 'en-US', label: 'English'},
+			{value: 'de-DE', label: 'German'},
+			{value: 'de-AT', label: 'Austrian'},
+		]
+
+		if ($q.localStorage.getItem("locale")) {
+			locale.value = $q.localStorage.getItem("locale")
+		}
+
+		watch(locale, () => {
+			$q.localStorage.set("locale", locale.value)
+		})
 
 		return {
 			selectedDarkModeValue,
 			darkMode,
 			themes,
-			setTheme
+			setTheme,
+
+			locale,
+			localeOptions
+
 		}
 	}
 }
