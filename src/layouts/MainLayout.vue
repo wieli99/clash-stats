@@ -11,16 +11,19 @@
 				<Notes></Notes>
 			</template>
 		</q-splitter>
+
+		<Menu></Menu>
 	</q-layout>
 </template>
 
 <script>
 import {defineComponent, ref} from "vue"
 import Notes from "components/Notes"
+import Menu from "components/Menu"
 
 export default defineComponent({
 	name: "MainLayout",
-	components: {Notes},
+	components: {Menu, Notes},
 	setup() {
 		return {
 			split: ref(80),

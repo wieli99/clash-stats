@@ -11,7 +11,9 @@
 		></ClashTeam>
 
 		<ClashTeamSkeleton v-if="displayEnemyTeamSkeleton"
-						   class="col-xs-10 col-sm-5 col-lg-3 q-ma-lg q-mx-auto"></ClashTeamSkeleton>
+						   class="col-xs-10 col-sm-5 col-lg-3 q-mt-lg q-mx-auto"></ClashTeamSkeleton>
+
+		<q-space class="col-10"></q-space>
 	</q-page>
 </template>
 
