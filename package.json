@@ -1,6 +1,6 @@
 {
 	"name": "clash-stats",
-	"version": "0.0.1",
+	"version": "1.0",
 	"description": "An app providing stats on my current clash team",
 	"productName": "Clash Stats",
 	"author": "Florian Wieland <florian@wieli.at>",

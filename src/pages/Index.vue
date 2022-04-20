@@ -1,5 +1,6 @@
 <template>
 	<q-page class="row">
+		<DialogElectron v-if="!$q.platform.is.electron"></DialogElectron>
 		<ClashSearch class="col-10 q-mt-xl q-mx-auto search"></ClashSearch>
 
 		<q-space class="col-10"></q-space>
@@ -27,10 +28,11 @@ import {useEnemyClashTeamStore} from "src/stores/enemyClashTeam"
 import ClashTeamSkeleton from "components/ClashTeamSkeleton"
 import {useQuasar} from "quasar"
 import {useI18n} from "vue-i18n"
+import DialogElectron from "components/DialogElectron"
 
 export default defineComponent({
 	name: "PageIndex",
-	components: {ClashTeamSkeleton, ClashSearch, ClashTeam},
+	components: {DialogElectron, ClashTeamSkeleton, ClashSearch, ClashTeam},
 
 	setup() {
 		const $q = useQuasar()
