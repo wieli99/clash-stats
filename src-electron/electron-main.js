@@ -1,7 +1,8 @@
 import {app, BrowserWindow, nativeTheme} from 'electron'
 import path from 'path'
 import os from 'os'
-import { initialize, enable } from '@electron/remote/main'
+import {enable, initialize} from '@electron/remote/main'
+import {autoUpdater} from 'electron-updater'
 
 initialize()
 
@@ -52,7 +53,11 @@ function createWindow() {
 	})
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+		autoUpdater.checkForUpdatesAndNotify()
+		createWindow()
+	}
+)
 
 app.on('window-all-closed', () => {
 	if (platform !== 'darwin') {
