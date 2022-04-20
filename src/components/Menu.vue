@@ -93,7 +93,6 @@ export default {
 	name: 'Menu',
 	setup() {
 		const $q = useQuasar()
-		const $t = useI18n()
 
 		const darkMode = ["Auto", "Dark", "Light"]
 		const themes = [

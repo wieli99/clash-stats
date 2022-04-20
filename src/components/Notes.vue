@@ -2,17 +2,7 @@
 	<q-card class="fixed full-width window-height notes">
 		<q-editor
 			v-model="notes"
-			:toolbar="[
-        ['bold', 'italic', 'underline', 'unordered', 'ordered'],
-        [
-          {
-            label: $q.lang.editor.formatting,
-            icon: $q.iconSet.editor.formatting,
-            list: 'no-icons',
-            options: ['h5', 'h6'],
-          },
-        ],
-      ]"
+			:toolbar="[['bold', 'italic', 'underline', 'unordered', 'ordered']]"
 			@update:model-value="sendNotes"
 		/>
 	</q-card>

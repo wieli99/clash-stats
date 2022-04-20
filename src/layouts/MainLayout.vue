@@ -26,7 +26,7 @@ export default defineComponent({
 	components: {Menu, Notes},
 	setup() {
 		return {
-			split: ref(80),
+			split: ref(75),
 		}
 	},
 })
