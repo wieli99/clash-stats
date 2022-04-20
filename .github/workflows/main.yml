@@ -28,12 +28,12 @@ jobs:
               with:
                   node-version: 16.14.2 # use the latest LTS version of Node
             - name: Install dependencies
-              run: yarn --frozen-lockfile
+              run: npm --frozen-lockfile
             - name: Build app
               if: github.ref != 'refs/heads/main'
-              run: yarn build
+              run: npm build
             - name: Build & deploy app
               if: github.ref == 'refs/heads/main'
               env:
                   GH_TOKEN: ${{ secrets.GH_TOKEN }}
-              run: yarn release
+              run: npm release
