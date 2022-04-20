@@ -21,6 +21,7 @@
 		"electron-updater": "^5.0.1",
 		"pinia": "^2.0.13",
 		"quasar": "^2.6.6",
+		"release": "^6.3.1",
 		"socket.io-client": "^4.4.1",
 		"vue": "^3.0.0",
 		"vue-i18n": "^9.0.0",
