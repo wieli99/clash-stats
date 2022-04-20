@@ -28,7 +28,7 @@ jobs:
               with:
                   node-version: 16.14.2 # use the latest LTS version of Node
             - name: Install dependencies
-              run: npm --frozen-lockfile
+              run: npm install
             - name: Build app
               if: github.ref != 'refs/heads/main'
               run: npm build
