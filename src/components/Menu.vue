@@ -201,6 +201,25 @@ export default {
 				"name": "Popular Color Schemes",
 				"values": [
 					{
+						"name": "Atom One",
+						"primary": "#518BFF",
+						"secondary": "#487ce3",
+						"accent": "#4373d2",
+
+						"dark": "#272B33",
+						"dark1": "#323842",
+						"dark2": "#3d4550",
+						"dark3": "#47515d",
+						"light": "#F9F9F9",
+						"light1": "#e1e1e1",
+						"light2": "#d2d2d2",
+
+						"positive": "#97C279",
+						"negative": "#DF6B75",
+						"info": "#C578DD",
+						"warning": "#D19965",
+					},
+					{
 						"name": "Dracula",
 						"primary": "#6272A4",
 						"secondary": "#51608f",
